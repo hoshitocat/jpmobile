@@ -342,6 +342,7 @@ describe "Jpmobile::Mail" do
     end
 
     it "delivers through SMTP" do
+      allow(@mail).to receive(:deliver).and_return(true)
       @mail.delivery_method :smtp, {:enable_starttls_auto => false}
       expect {
         @mail.deliver
